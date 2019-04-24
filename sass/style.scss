@@ -53,7 +53,7 @@ body {
                 .header-menu__item {
                     display: inline-block;
 
-                    a {
+                    .header-menu__item-link {
                         line-height: 50px;
                         padding: 0 20px;
                         color: $third-color;
@@ -188,14 +188,14 @@ section.gallery {
             object-fit: cover;
         }
 
-        .layer {
+        .gallery-layer {
             position: absolute;
             top: 0;
             left: 0;
             height: 100%;
             width: 100%;
 
-            .content {
+            .gallery-layer__content {
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -218,42 +218,44 @@ section.gallery {
 section.employees {
     padding: 100px 0;
 
-    .cover {
-        border-radius: 120px;
-        overflow: hidden;
-        max-width: 150px;
-        margin: 0 auto;
-        position: relative;
-    }
+    .container {
+        .cover {
+            border-radius: 120px;
+            overflow: hidden;
+            max-width: 150px;
+            margin: 0 auto;
+            position: relative;
 
-    img {
-        display: block;
-        width: 100%;
-    }
+            .employees-photo {
+                display: block;
+                width: 100%;
+            }
 
-    p {
-        text-align: center;
-        color: #959595;
-        font-size: 15px;
-        font-weight: bold;
-    }
+            .cover-text {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+                text-align: center;
+                background-color: $secondary-color;
+                color: $third-color;
+                line-height: 150px;
+                opacity: 0;
+                transition: .5s;
 
-    .napis {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        text-align: center;
-        background-color: $secondary-color;
-        color: $third-color;
-        line-height: 150px;
-        opacity: 0;
-        transition: .5s;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
 
-        &:hover {
-            opacity: 1;
+        .employees-name {
+            text-align: center;
+            color: #959595;
+            font-size: 15px;
+            font-weight: bold;
         }
     }
 }
@@ -265,36 +267,36 @@ section.awesome {
 
     .container {
         padding: 70px 70px 0 70px;
-    }
 
-    .text {
-        color: $third-color;
-        padding: 0px 40px 0 40px;
-    }
+        .awesome-text {
+            color: $third-color;
+            padding: 0 40px 0 40px;
 
-    .h1 {
-        padding-left: 15px;
-    }
+            .awesome-text__header {
+                padding-left: 15px;
+            }
 
-    .col {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+            .awesome-text__col {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
 
-    .picture {
-        border-top: 40px solid #383A39;
-        border-left: 40px solid #383A39;
-        border-right: 40px solid #383A39;
-        border-radius: 20px 20px 0 0;
-    }
+        .awesome-picture {
+            border-top: 40px solid #383A39;
+            border-left: 40px solid #383A39;
+            border-right: 40px solid #383A39;
+            border-radius: 20px 20px 0 0;
 
-    .image {
-        line-height: 0;
-    }
+            .awesome-picture-box {
+                line-height: 0;
 
-    img {
-        width: 100%;
-        height: 130px;
+                .awesome-picture-box__image {
+                    width: 100%;
+                    height: 130px;
+                }
+            }
+        }
     }
 }
 
@@ -305,14 +307,14 @@ section.numbers {
     text-align: center;
     padding: 80px 0;
 
-    h6 {
+    .numbers-number {
         color: $primary-color;
         font-size: 74px;
         font-weight: 900;
         margin: 0;
     }
 
-    p {
+    .numbers-text {
         font-size: 19px;
         font-weight: 700;
         text-transform: uppercase;
@@ -365,26 +367,26 @@ section.footer {
 }
 
 @media(min-width: 992px) {
-    .layer {
+    .gallery-layer {
         opacity: 0;
         transition: .3s ease;
         background: $secondary-color;
     }
 
-    .gallery .gallery-image:hover .layer {
+    .gallery .gallery-image:hover .gallery-layer {
         opacity: 1;
     }
 
-    .layer .content i:hover {
+    .gallery-layer .gallery-layer__content .content-icon:hover {
         color: #eee;
     }
 
     /* awesome */
-    .picture {
+    .awesome-picture {
         float: left;
     }
 
-    .text {
+    .awesome-text {
         float: right;
     }
 }
@@ -426,8 +428,8 @@ section.footer {
         }
     }
 
-    .layer {
-        .content {
+    .gallery-layer {
+        .gallery-layer__content {
             .content-icon {
                 font-size: 20px;
             }
@@ -435,11 +437,11 @@ section.footer {
     }
 
     /* awesome */
-    .picture {
+    .awesome-picture {
         float: left;
     }
 
-    .text {
+    .awesome-text {
         float: right;
     }
 }
@@ -481,26 +483,26 @@ section.footer {
         }
     }
 
-    .layer .content i {
+    .gallery-layer .gallery-layer__content  .content-icon {
         font-size: 20px;
     }
 
     /* Awesome */
-    .awesome {
+    section.awesome {
         .container {
             padding: 50px 50px 0 50px;
-        }
 
-        .text {
-            padding: 0px 20px 0 20px;
+            .awesome-text {
+                padding: 0 5px 0 5px;
 
-            h1 {
-                padding-left: 5px;
-            }
+                .awesome-text__header {
+                    padding-left: 5px;
+                }
 
-            col {
-                padding-left: 5px;
-                padding-right: 5px;
+                .awesome-text__col {
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
             }
         }
     }
